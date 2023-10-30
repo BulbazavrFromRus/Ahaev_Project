@@ -1,4 +1,4 @@
-package org.example.validators.student;
+package org.example.validators.entity.student;
 
 import java.util.List;
 

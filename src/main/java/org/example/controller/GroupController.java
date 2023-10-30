@@ -2,7 +2,7 @@ package org.example.controller;
 
 import org.example.entities.GroupStudent;
 import org.example.request.group.AddGroupRequest;
-import org.example.validators.group.ValidatorAddGroupRequest;
+import org.example.validators.entity.group.ValidatorAddGroupRequest;
 
 public class GroupController {
       public void returnQueryAdd(AddGroupRequest request){

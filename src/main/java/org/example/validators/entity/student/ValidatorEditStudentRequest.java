@@ -1,4 +1,4 @@
-package org.example.validators.student;
+package org.example.validators.entity.student;
 
 import org.example.request.student.EditStudentRequest;
 import org.example.validators.primitivevalidator.ValidatorId;
@@ -8,7 +8,7 @@ import org.example.validators.primitivevalidator.ValidatorStatus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidatorEditStudentRequest implements ValidatorRequest<EditStudentRequest>{
+public class ValidatorEditStudentRequest implements ValidatorRequest<EditStudentRequest> {
     private ValidatorNonEmptyStringAndMaxLength validatorNonEmptyString;
     private ValidatorStatus validatorStatus;
 
