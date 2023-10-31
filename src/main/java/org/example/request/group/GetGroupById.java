@@ -1,9 +1,9 @@
-package org.example.request;
+package org.example.request.group;
 
-public class IdRequest {
+public class GetGroupById {
     private long id;
 
-    public IdRequest(long id) {
+    public GetGroupById(long id) {
         this.id = id;
     }
 
