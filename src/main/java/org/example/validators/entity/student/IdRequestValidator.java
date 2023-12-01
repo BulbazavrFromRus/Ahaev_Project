@@ -1,6 +1,7 @@
 package org.example.validators.entity.student;
 
 import org.example.request.IdRequest;
+import org.example.validators.ValidatorRequest;
 import org.example.validators.primitivevalidator.ValidatorId;
 
 import java.util.ArrayList;

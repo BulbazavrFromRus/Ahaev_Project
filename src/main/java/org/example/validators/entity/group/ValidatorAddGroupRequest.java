@@ -2,7 +2,7 @@ package org.example.validators.entity.group;
 
 import org.example.request.group.AddGroupRequest;
 import org.example.validators.primitivevalidator.ValidatorNonEmptyStringAndMaxLength;
-import org.example.validators.student.ValidatorRequest;
+import org.example.validators.ValidatorRequest;
 
 import java.util.ArrayList;
 import java.util.List;

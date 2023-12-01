@@ -1,4 +1,6 @@
-package org.example.response;
+package org.example.responses.student_response;
+
+import org.example.responses.group_response.GroupResponse;
 
 import java.util.Objects;
 

@@ -1,13 +1,14 @@
 package org.example.responses.group_response;
 
 public class EditGroupResponse {
-    private long id;
+     private long id;
     private String nameGroup;
 
-    public EditGroupResponse(long id, String nameGroup) {
+    public EditGroupResponse(String nameGroup) {
         this.id = id;
         this.nameGroup = nameGroup;
     }
+
     public long getId() {
         return id;
     }

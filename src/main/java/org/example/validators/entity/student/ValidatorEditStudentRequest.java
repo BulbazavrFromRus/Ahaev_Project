@@ -1,6 +1,7 @@
 package org.example.validators.entity.student;
 
 import org.example.request.student.EditStudentRequest;
+import org.example.validators.ValidatorRequest;
 import org.example.validators.primitivevalidator.ValidatorId;
 import org.example.validators.primitivevalidator.ValidatorNonEmptyStringAndMaxLength;
 import org.example.validators.primitivevalidator.ValidatorStatus;

@@ -5,7 +5,8 @@ import org.example.entities.Student;
 import org.example.request.student.AddStudentRequest;
 import org.example.request.student.EditStudentRequest;
 import org.example.request.student.GetAllStudentRequest;
-import org.example.request.student.GetStudentById;
+import org.example.request.student.GetStudentByIdRequest;
+import org.example.request.student.GetStudentByIdRequest;
 
 import java.util.List;
 
@@ -15,6 +16,5 @@ public interface IStudentServices {
     void deleteStudent(DeleteLessonRequest deleteLessonRequest);
     List<Student> getStudentsByIdGroup(GetAllStudentRequest getAllStudentRequest);
 
-    Student getStudentById(GetStudentById getStudentById);
-
+    Student getStudentById(GetStudentByIdRequest getStudentByIdRequest);
 }
