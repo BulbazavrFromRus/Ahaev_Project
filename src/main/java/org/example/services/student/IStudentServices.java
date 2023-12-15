@@ -19,7 +19,7 @@ public interface IStudentServices {
     long addStudent(AddStudentRequest addStudentRequest) throws ServiceException;
     void editStudent(EditStudentRequest editStudentRequest) throws RepositoryException;
     void deleteStudent(IdRequest deleteLessonRequest) throws ServiceException;
-    List<Student> getStudentsByIdGroup(GetAllStudentRequest getAllStudentRequest) throws RepositoryException;
+    List<Student> getStudentsByIdGroup(IdRequest getAllStudentRequest) throws RepositoryException;
 
     Student getStudentById(IdRequest getStudentByIdRequest) throws RepositoryException;
 }

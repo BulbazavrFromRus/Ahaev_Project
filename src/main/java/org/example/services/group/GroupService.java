@@ -7,9 +7,13 @@ import org.example.request.group.EditGroupRequest;
 import org.example.request.group.GetGroupById;
 
 public class GroupService implements IGroupService{
+    private IGroupService iGroupService;
+
+
+
     @Override
     public long addGroup(AddGroupRequest addGroupRequest) {
-        return 0;
+      return 0L;
     }
 
     @Override

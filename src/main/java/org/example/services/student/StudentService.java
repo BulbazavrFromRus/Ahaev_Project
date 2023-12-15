@@ -2,6 +2,7 @@ package org.example.services.student;
 
 import org.example.classrequest.DeleteLessonRequest;
 import org.example.converters.AddStudentConverter;
+import org.example.converters.EditStudentConverter;
 import org.example.entities.Student;
 import org.example.repository.IStudentRepository;
 import org.example.repository.RepositoryException;
@@ -20,7 +21,13 @@ import java.util.List;
 public class StudentService implements IStudentServices{
     private IStudentRepository iStudentRepository;
     private AddStudentConverter addStudentConverter;
+    private EditStudentConverter editStudentConverter;
 
+    public StudentService(IStudentRepository iStudentRepository, AddStudentConverter addStudentConverter, EditStudentConverter editStudentConverter) {
+        this.iStudentRepository = iStudentRepository;
+        this.addStudentConverter = addStudentConverter;
+        this.editStudentConverter = editStudentConverter;
+    }
 
     @Override
     public long addStudent(AddStudentRequest addStudentRequest) throws ServiceException{
@@ -30,14 +37,18 @@ public class StudentService implements IStudentServices{
           return iStudentRepository.addStudent(student);
 
         }catch(RepositoryException e){
-            throw new  ServiceException("Unable to delete student", e);
+            throw new  ServiceException("Unable to add student", e);
         }
     }
 
     @Override
-    public void editStudent(EditStudentRequest editStudentRequest) throws ServiceException{
-
-
+    public void editStudent(EditStudentRequest editStudentRequest) throws ServiceException {
+        try{
+            Student student = editStudentConverter.toEntity(editStudentRequest);
+            iStudentRepository.updateStudent(editStudentRequest.getIdStudent(), student);
+        }catch(RepositoryException e){
+            throw  new ServiceException("Unable to edit student", e);
+        }
     }
 
     @Override
@@ -50,15 +61,25 @@ public class StudentService implements IStudentServices{
     }
 
     @Override
-    public List<Student> getStudentsByIdGroup(GetAllStudentRequest getAllStudentRequest) {
-        return null;
+    public List<Student> getStudentsByIdGroup(IdRequest getAllStudentRequest) throws RepositoryException {
+        try{
+            return iStudentRepository.getStudentsByIdGroup(getAllStudentRequest.getId());
+
+        } catch(RepositoryException e){
+            throw new ServiceException("Unable to get students by id group", e);
+        }
     }
+
 
     @Override
-    public Student getStudentById(IdRequest getStudentById) {
-        return null;
+    public Student getStudentById(IdRequest getStudentById)  throws ServiceException {
+        try{
+           return iStudentRepository.getStudent(getStudentById.getId());
+
+        } catch(RepositoryException e){
+            throw new ServiceException("Unable to get student by id", e);
+        }
+
     }
-
-
 
 }
