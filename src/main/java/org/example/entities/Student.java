@@ -1,10 +1,7 @@
 package org.example.entities;
 
 import modele.Status;
-import modele.Status;
-import org.example.repository.IStudent;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Student{
@@ -15,7 +12,7 @@ public class Student{
     private long foreignGroupId;
     private Status status;
 
-    public Student(int id, String name, String lastName, String middleName, int foreignGroupId, Status status) {
+    public Student(long id, String name, String lastName, String middleName, long foreignGroupId, Status status) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;

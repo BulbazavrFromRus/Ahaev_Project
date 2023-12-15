@@ -38,7 +38,7 @@ public class GroupController {
 
             if(errors.isEmpty()){
                   System.out.println("Group was added");
-                  //call some add group servis
+                  //call some add group servic
                   try{
                      response = new CommonResponse<>(
                              new AddGroupResponse(iGroupService.addGroup(request))

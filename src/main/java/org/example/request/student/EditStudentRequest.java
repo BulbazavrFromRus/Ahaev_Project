@@ -1,14 +1,16 @@
 package org.example.request.student;
 
+import modele.Status;
+
 public class EditStudentRequest {
     private long idStudent;
     private String firstName;
     private String lastName;
     private String middleName;
-    private String status;
+    private Status status;
     private long groupId;
 
-    public EditStudentRequest(long idStudent, String firstName, String lastName, String middleName, String status, long groupId) {
+    public EditStudentRequest(long idStudent, String firstName, String lastName, String middleName, Status status, long groupId) {
         this.idStudent = idStudent;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,7 +31,7 @@ public class EditStudentRequest {
     public String getMiddleName() {
         return middleName;
     }
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
     public long getGroupId() {

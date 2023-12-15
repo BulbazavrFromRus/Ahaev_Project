@@ -1,14 +1,16 @@
 package org.example.request.student;
 
+import modele.Status;
+
 public class AddStudentRequest {
     private String firstName;
     private String lastName;
     private String middleName;
 
-    private String status;
+    private Status status;
     private Long groupId;
 
-    public AddStudentRequest(String firstName, String lastName, String middleName, Long groupId, String status) {
+    public AddStudentRequest(String firstName, String lastName, String middleName, Long groupId, Status status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
@@ -32,7 +34,7 @@ public class AddStudentRequest {
         return groupId;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 }

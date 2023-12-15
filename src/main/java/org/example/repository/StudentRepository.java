@@ -5,7 +5,7 @@ import org.example.entities.Student;
 
 import java.util.Map;
 
-public class StudentRepository implements IStudent{
+public class StudentRepository implements IStudentRepository {
     private DataBase dataBase;
 
 
@@ -28,11 +28,11 @@ public class StudentRepository implements IStudent{
 
     @Override
     public void updateStudent(int id, Student student) {
-         if()
+
     }
 
     @Override
-    public void deleteStudent(int id) {
+    public void deleteStudent(long id) {
 
     }
 }
