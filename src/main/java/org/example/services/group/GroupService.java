@@ -1,19 +1,29 @@
 package org.example.services.group;
 
-import jdk.javadoc.internal.doclets.toolkit.util.Group;
+import org.example.converters.group.GroupConverter;
 import org.example.entities.GroupStudent;
+import org.example.repository.IGroupRepository;
+import org.example.repository.RepositoryException;
 import org.example.request.group.AddGroupRequest;
 import org.example.request.group.EditGroupRequest;
-import org.example.request.group.GetGroupById;
+import org.example.services.ServiceException;
+
+import javax.sql.rowset.serial.SerialException;
 
 public class GroupService implements IGroupService{
-    private IGroupService iGroupService;
+    private IGroupRepository iGroupRepository;
+    private GroupConverter groupConverter;
 
 
 
     @Override
-    public long addGroup(AddGroupRequest addGroupRequest) {
-       return 0L;
+    public long addGroup(AddGroupRequest addGroupRequest) throws ServiceException{
+        try{
+            GroupStudent group = groupConverter.toEntity(addGroupRequest);
+            return iGroupRepository.addGroup(group);
+        } catch(RepositoryException e){
+            System.out.println("Unable to add group", e);
+        }
     }
 
     @Override

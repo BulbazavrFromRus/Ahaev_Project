@@ -2,18 +2,19 @@ package org.example.repository;
 
 import org.example.database.DataBase;
 import org.example.entities.GroupStudent;
+import org.example.services.ServiceException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class RepositoryGroup implements IGroup{
+public class RepositoryGroup implements IGroupRepository {
 
     private DataBase dataBase;
 
     //by adding group we have to increase index of current group(added)
     @Override
-    public long addGroup(GroupStudent group) throws RepositoryException {
+    public long addGroup(GroupStudent group) throws ServiceException {
         Map<Long, GroupStudent> mapGroup = dataBase.getMapGroup();
 
         long newMaxId = dataBase.getGroupMaxId()+1;

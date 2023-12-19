@@ -1,9 +1,6 @@
 package org.example.entities;
 
-import org.example.repository.IGroup;
-
 import java.util.Objects;
-import java.util.Scanner;
 
 public class GroupStudent{
     private long id;
@@ -14,6 +11,11 @@ public class GroupStudent{
 
         this.groupName = groupName;
     }
+
+    public GroupStudent(String groupName) {
+        this.groupName = groupName;
+    }
+
 
 
     public long getId() {
