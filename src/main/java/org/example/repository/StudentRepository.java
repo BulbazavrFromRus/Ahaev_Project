@@ -28,15 +28,21 @@ public class StudentRepository implements IStudentRepository {
     }
 
     @Override
-    public void updateStudent(long id, Student student) {
-
+    public void updateStudent(Student student) {
+                if (dataBase.getMapStudent().containsKey(student.getId())) {
+                    dataBase.getMapStudent().put(student.getId(), student);
+                }
+                else {
+                    System.out.println("There is not student with such id");
+                }
     }
 
     @Override
     public void deleteStudent(long id) {
-
+        dataBase.getMapStudent().remove(id);
     }
 
+    @Override
     public List<Student> getStudentsByGroupId(long id){
         Map<Long, Student> studentMap = dataBase.getMapStudent();
         List<Student> studentList = new ArrayList<Student>();
@@ -44,7 +50,7 @@ public class StudentRepository implements IStudentRepository {
 
         for (Map.Entry<Long, Student> entry: studentMap.entrySet()) {
            Student student  = entry.getValue();
-           student.getForeignGroupId();
+
            if (student.getForeignGroupId() == id) {
                studentList.add(student);
            }

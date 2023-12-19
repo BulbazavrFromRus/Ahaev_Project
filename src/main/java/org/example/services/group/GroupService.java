@@ -13,7 +13,7 @@ public class GroupService implements IGroupService{
 
     @Override
     public long addGroup(AddGroupRequest addGroupRequest) {
-      return 0L;
+       return 0L;
     }
 
     @Override

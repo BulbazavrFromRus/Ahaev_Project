@@ -1,19 +1,13 @@
 package org.example.services.student;
 
-import org.example.classrequest.DeleteLessonRequest;
-import org.example.converters.AddStudentConverter;
-import org.example.converters.EditStudentConverter;
+import org.example.converters.student.AddStudentConverter;
+import org.example.converters.student.EditStudentConverter;
 import org.example.entities.Student;
 import org.example.repository.IStudentRepository;
 import org.example.repository.RepositoryException;
-import org.example.repository.StudentRepository;
 import org.example.request.IdRequest;
 import org.example.request.student.AddStudentRequest;
 import org.example.request.student.EditStudentRequest;
-import org.example.request.student.GetAllStudentRequest;
-import org.example.request.student.GetStudentByIdRequest;
-import org.example.request.student.GetStudentByIdRequest;
-import org.example.responses.student_response.DeleteStudentResponse;
 import org.example.services.ServiceException;
 
 import java.util.List;
@@ -45,7 +39,7 @@ public class StudentService implements IStudentServices{
     public void editStudent(EditStudentRequest editStudentRequest) throws ServiceException {
         try{
             Student student = editStudentConverter.toEntity(editStudentRequest);
-            iStudentRepository.updateStudent(editStudentRequest.getIdStudent(), student);
+            iStudentRepository.updateStudent(student);
         }catch(RepositoryException e){
             throw  new ServiceException("Unable to edit student", e);
         }
@@ -63,7 +57,7 @@ public class StudentService implements IStudentServices{
     @Override
     public List<Student> getStudentsByIdGroup(IdRequest getAllStudentRequest) throws RepositoryException {
         try{
-            return iStudentRepository.getStudentsByIdGroup(getAllStudentRequest.getId());
+            return iStudentRepository.getStudentsByGroupId(getAllStudentRequest.getId());
 
         } catch(RepositoryException e){
             throw new ServiceException("Unable to get students by id group", e);

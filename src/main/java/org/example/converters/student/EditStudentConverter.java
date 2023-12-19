@@ -1,4 +1,4 @@
-package org.example.converters;
+package org.example.converters.student;
 
 import org.example.entities.Student;
 import org.example.request.student.AddStudentRequest;

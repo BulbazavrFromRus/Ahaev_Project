@@ -21,6 +21,16 @@ public class Student{
         this.status = status;
     }
 
+    public Student(String name, String lastName, String middleName, long foreignGroupId, Status status) {
+        this.name = name;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.foreignGroupId = foreignGroupId;
+        this.status = status;
+    }
+
+
+
     public long getId() {
         return id;
     }
