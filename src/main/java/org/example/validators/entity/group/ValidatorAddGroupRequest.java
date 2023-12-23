@@ -10,6 +10,8 @@ import java.util.List;
 public class ValidatorAddGroupRequest implements ValidatorRequest<AddGroupRequest> {
        private ValidatorNonEmptyStringAndMaxLength validatorNonEmptyStringAndMaxLength;
 
+
+
     public ValidatorAddGroupRequest(ValidatorNonEmptyStringAndMaxLength validatorNonEmptyStringAndMaxLength) {
         this.validatorNonEmptyStringAndMaxLength = validatorNonEmptyStringAndMaxLength;
     }

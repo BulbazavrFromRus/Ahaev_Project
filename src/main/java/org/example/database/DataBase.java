@@ -21,6 +21,9 @@ public class DataBase {
     private int lessonMaxId;
     private int disciplineMaxId;
 
+
+
+
     public Map<Long, GroupStudent> getMapGroup() {
         return mapGroup;
     }

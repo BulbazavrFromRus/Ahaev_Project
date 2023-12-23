@@ -12,6 +12,12 @@ public class RepositoryGroup implements IGroupRepository {
 
     private DataBase dataBase;
 
+
+    public RepositoryGroup(DataBase dataBase){
+        this.dataBase =dataBase;
+    }
+
+
     //by adding group we have to increase index of current group(added)
     @Override
     public long addGroup(GroupStudent group) throws ServiceException {
