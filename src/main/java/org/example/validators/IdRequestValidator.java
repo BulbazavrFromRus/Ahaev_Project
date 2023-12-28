@@ -1,4 +1,4 @@
-package org.example.validators.entity.student;
+package org.example.validators;
 
 import org.example.request.IdRequest;
 import org.example.validators.ValidatorRequest;

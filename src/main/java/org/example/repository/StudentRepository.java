@@ -9,6 +9,9 @@ import java.util.List;
 public class StudentRepository implements IStudentRepository {
     private DataBase dataBase;
 
+    public StudentRepository(DataBase dataBase) {
+        this.dataBase = dataBase;
+    }
 
     @Override
     public long addStudent(Student student) {

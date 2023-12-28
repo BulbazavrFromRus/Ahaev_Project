@@ -1,30 +1,37 @@
 package org.example.controller;
 
-import jdk.javadoc.internal.doclets.toolkit.util.Group;
 import org.example.entities.GroupStudent;
+import org.example.request.IdRequest;
 import org.example.request.group.AddGroupRequest;
 import org.example.request.group.EditGroupRequest;
-import org.example.request.group.GetGroupById;
+import org.example.request.group.GetGroupByIdRequest;
 import org.example.responses.CommonResponse;
 import org.example.responses.ResponseEntity;
 import org.example.responses.group_response.AddGroupResponse;
 import org.example.responses.group_response.EditGroupResponse;
 import org.example.responses.group_response.GetGroupByIdResponse;
-import org.example.services.group.GroupService;
 import org.example.services.group.IGroupService;
 import org.example.validators.ValidatorRequest;
-import org.example.validators.entity.group.ValidatorAddGroupRequest;
 
 import java.util.List;
 
 public class GroupController {
       private ValidatorRequest<AddGroupRequest> addGroupRequestValidatorRequest;
       private ValidatorRequest<EditGroupRequest> editGroupRequestValidatorRequest;
-      private ValidatorRequest<GetGroupById> getGroupByIdValidatorRequest;
+      private ValidatorRequest<IdRequest> getGroupByIdValidatorRequest;
 
       private IGroupService iGroupService;
 
 
+      public GroupController(ValidatorRequest<AddGroupRequest> addGroupRequestValidatorRequest,
+                             ValidatorRequest<EditGroupRequest> editGroupRequestValidatorRequest,
+                             ValidatorRequest<IdRequest> getGroupByIdValidatorRequest,
+                             IGroupService iGroupService) {
+            this.addGroupRequestValidatorRequest = addGroupRequestValidatorRequest;
+            this.editGroupRequestValidatorRequest = editGroupRequestValidatorRequest;
+            this.getGroupByIdValidatorRequest = getGroupByIdValidatorRequest;
+            this.iGroupService = iGroupService;
+      }
 
       //создаём метод, который будет возвращать ответ от сервера, который увидит пользователь
       //помещаем в ResponseEntity CommonResponse, тем самым указывая на то что будет возвращать там сервер
@@ -81,7 +88,7 @@ public class GroupController {
       }
 
 
-      public ResponseEntity<CommonResponse<GetGroupByIdResponse>> getById(GetGroupById request){
+      public ResponseEntity<CommonResponse<GetGroupByIdResponse>> getById(IdRequest request){
             List<String> errors = getGroupByIdValidatorRequest.validate(request);
             CommonResponse<GetGroupByIdResponse> response;
             int httpStatus = 201;

@@ -1,9 +1,11 @@
 package org.example.request.group;
 
-public class GetGroupById {
+
+//we might not use this class
+public class GetGroupByIdRequest {
     private long id;
 
-    public GetGroupById(long id) {
+    public GetGroupByIdRequest(long id) {
         this.id = id;
     }
 
