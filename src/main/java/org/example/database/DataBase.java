@@ -21,8 +21,13 @@ public class DataBase {
     private int lessonMaxId;
     private int disciplineMaxId;
 
-
-
+    public DataBase() {
+        mapStudent = new HashMap<>();
+        mapGroup = new HashMap<>();
+        mapDiscipline = new HashMap<>();
+        mapLesson = new HashMap<>();
+        mapTutor =new HashMap<>();
+    }
 
     public Map<Long, GroupStudent> getMapGroup() {
         return mapGroup;

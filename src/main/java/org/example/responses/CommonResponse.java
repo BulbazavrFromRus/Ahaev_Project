@@ -22,4 +22,25 @@ public class CommonResponse<T> {
         this.errorMessage = errorMessage;
         this.errosList = errosList;
     }
+
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public Integer getCodeError() {
+        return codeError;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public List<String> getErrosList() {
+        return errosList;
+    }
 }

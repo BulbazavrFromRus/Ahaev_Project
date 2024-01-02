@@ -3,6 +3,8 @@ package org.example.validators.primitivevalidator;
 import java.util.List;
 
 public class ValidatorNonEmptyStringAndMaxLength {
+
+
      public boolean validateNonEmptyString(String str, List<String> errorsList, String fieldName, String noticeError)
      {
          if(str == null || str.equals(""))

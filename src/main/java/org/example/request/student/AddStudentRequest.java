@@ -1,5 +1,7 @@
 package org.example.request.student;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import modele.Status;
 
 public class AddStudentRequest {
@@ -10,7 +12,14 @@ public class AddStudentRequest {
     private Status status;
     private Long groupId;
 
-    public AddStudentRequest(String firstName, String lastName, String middleName, Long groupId, Status status) {
+
+    @JsonCreator
+    public AddStudentRequest(@JsonProperty("name") String firstName,
+                             @JsonProperty("lastName")String lastName,
+                             @JsonProperty("middleName") String middleName,
+                             @JsonProperty("groupId") Long groupId,
+                             @JsonProperty("status") Status status) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;

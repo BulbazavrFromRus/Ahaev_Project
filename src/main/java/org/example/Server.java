@@ -1,4 +1,7 @@
+package org.example;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import modele.Status;
 import org.example.controller.GroupController;
 import org.example.controller.StudentController;
 import org.example.converters.group.GroupConverter;
@@ -7,6 +10,7 @@ import org.example.converters.student.EditStudentConverter;
 import org.example.database.DataBase;
 import org.example.handlers.HandlerException;
 import org.example.handlers.IHandler;
+import org.example.handlers.student.AddStudentHandler;
 import org.example.repository.IGroupRepository;
 import org.example.repository.IStudentRepository;
 import org.example.repository.RepositoryGroup;
@@ -26,6 +30,7 @@ import org.example.validators.primitivevalidator.ValidatorId;
 import org.example.validators.primitivevalidator.ValidatorNonEmptyStringAndMaxLength;
 import org.example.validators.primitivevalidator.ValidatorStatus;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Server {
@@ -37,7 +42,6 @@ public class Server {
     private ValidatorNonEmptyStringAndMaxLength validatorNonEmptyStringAndMaxLength;
 
     private DataBase dataBase;
-    private ObjectMapper objectMapper;
     private Map<String, IHandler> handlers;
 
 
@@ -51,6 +55,8 @@ public class Server {
     private GroupConverter groupConverter;
     private RepositoryGroup repositoryGroup;
     private GroupController groupController;
+
+    private ObjectMapper objectMapper;
 
 
     //For student
@@ -68,6 +74,12 @@ public class Server {
 
     private StudentRepository studentRepository;
 
+    private ValidatorStatus validatorStatus;
+
+    public Server(DataBase dataBase) {
+        this.dataBase = dataBase;
+        this.objectMapper = new ObjectMapper();
+    }
 
     public void init() {
 
@@ -89,12 +101,18 @@ public class Server {
         );
 
 
-        dataBase = new DataBase();
+        /*dataBase = new DataBase();*/
         repositoryGroup = new RepositoryGroup(dataBase);
 
 
         //For student
-        validatorAddStudentRequest = new ValidatorAddStudentRequest(validatorNonEmptyStringAndMaxLength);
+        validatorStatus = new ValidatorStatus();
+        iStudentRepository = new StudentRepository(dataBase);
+        addStudentConverter = new AddStudentConverter();
+        editStudentConverter = new EditStudentConverter();
+
+
+        validatorAddStudentRequest = new ValidatorAddStudentRequest(validatorNonEmptyStringAndMaxLength, validatorStatus, validatorId);
         validatorEditGroupRequest = new ValidatorEditGroupRequest(validatorNonEmptyStringAndMaxLength);
 
         studentServices = new StudentService(iStudentRepository, addStudentConverter,editStudentConverter);
@@ -106,14 +124,16 @@ public class Server {
 
         studentRepository  = new StudentRepository(dataBase);
 
+        handlers = new HashMap<>();
+        handlers.put("addStudent", new AddStudentHandler(studentController, objectMapper));
+
 
     }
 
 
     public String accept(String json, String endPoint){
          IHandler handler = handlers.get(endPoint);
-          String response;
-
+         String response;
 
 
              if (handler == null) {

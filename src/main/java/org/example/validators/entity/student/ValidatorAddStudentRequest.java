@@ -15,11 +15,12 @@ public class ValidatorAddStudentRequest implements ValidatorRequest<AddStudentRe
     private ValidatorStatus validatorStatus;
 
     private ValidatorId validatorId;
-    public ValidatorAddStudentRequest(ValidatorNonEmptyStringAndMaxLength validatorNonEmptyString) {
+
+    public ValidatorAddStudentRequest(ValidatorNonEmptyStringAndMaxLength validatorNonEmptyString, ValidatorStatus validatorStatus, ValidatorId validatorId) {
         this.validatorNonEmptyString = validatorNonEmptyString;
+        this.validatorStatus = validatorStatus;
+        this.validatorId = validatorId;
     }
-
-
 
     @Override
     public List<String> validate(AddStudentRequest request) {
